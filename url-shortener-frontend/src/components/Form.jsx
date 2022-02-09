@@ -19,9 +19,19 @@ const Button = styled.button`
 const Form = () => {
     const [url,setUrl] = useState('');
 
-    const handleSubmit = (e) =>{
+    const handleSubmit = async (e) =>{
         e.preventDefault();
-        console.log(url);
+
+        const data = await fetch("http://localhost:8080/create",{
+            method:"POST",
+            headers:{
+                'Content-Type':'application/json',
+            },
+            body:JSON.stringify({url:url})
+        }).then(res => res.json());
+
+        console.log(data);
+        
     }
 
     const handleChange = (e) =>{
@@ -30,7 +40,7 @@ const Form = () => {
   return (
     <Container>
         <FormContainer onSubmit={handleSubmit}>
-            <Input type="url" placeholder="Enter URL..." name="url" value={url} onChange={handleChange}/>
+            <Input type="url" placeholder="Enter URL..." name="url" value={url} onChange={handleChange} required/>
             <Button type="submit">Shrink</Button>
         </FormContainer>
     </Container>
