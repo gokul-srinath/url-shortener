@@ -1,15 +1,11 @@
-import styled  from "styled-components";
 
-const Container = styled.div`
+import Form from "./components/Form";
 
 
-`;
 
 function App() {
   return (
-   <Container>
-     
-   </Container>
+    <Form/>
   );
 }
 
