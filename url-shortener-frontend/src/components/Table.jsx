@@ -5,13 +5,25 @@ import styled from 'styled-components'
 
 
 const Container = styled.div`
-
+    /* border: 1px solid red;    */
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
 `
 const TableContainer = styled.table`
-
+    /* flex: 1; */
+    width: 80vw;
+    
+    border-collapse: collapse;
 `
 const THeadData = styled.th`
-    
+    background-color: #21acac;
+    color: white;
+    font-size: 18px;
+    padding: 1rem;
+    border: 1px solid #ddd;
 `
 const TBody = styled.tbody`
     
@@ -21,19 +33,27 @@ const THead = styled.thead`
 `
 
 const TRow = styled.tr`
-    
+    :nth-child(even){
+        background-color: #eee;
+    }
 `
 
 const TData = styled.td`
+    padding: 1rem;
+    /* border: 1px solid #a8a6a6; */
     
 `
 const Link = styled.a`
-    
+    text-decoration:none;
+    color: teal;
+    :hover{
+        text-decoration: underline;
+    }
 `
 
-const Table = () => {
+const Table = ({trigger}) => {
 
-    const {isLoading, data:urls, error} = useQuery('datas', ()=>{
+    const {isLoading, data:urls, error} = useQuery(['datas',trigger], ()=>{
        return fetch("http://localhost:8080/urls",{
            headers: {
                'Content-Type' : 'application/json'
@@ -65,13 +85,25 @@ const Table = () => {
                 </TRow>
             </THead>
             <TBody>
-                {urls && JSON.parse(urls.message).map(url => {
+
+            <TRow>
+                <TData><Link href='#'>https://www.youtube.com/watch?v=btWnZxF-Hck</Link></TData>
+                <TData><Link href='#'>_mFPZ0OcD0r07sxfle1Sb</Link></TData>
+                <TData>2</TData>
+            </TRow>
+            <TRow>
+                <TData><Link href='#'>https://www.youtube.com/watch?v=btWnZxF-Hck</Link></TData>
+                <TData><Link href='#'>_mFPZ0OcD0r07sxfle1Sb</Link></TData>
+                <TData>2</TData>
+            </TRow>
+            
+                {/* {urls && JSON.parse(urls.message).map(url => {
                     return (<TRow key={url._id}>
                         <TData><Link href={url.full}>{url.full}</Link></TData>
                         <TData><Link href={`http://localhost:8080/${url.short}`}>{url.short}</Link></TData>
                         <TData>{url.clicks}</TData>
                     </TRow>);
-                })}
+                })} */}
             </TBody>
         </TableContainer>
     </Container>
