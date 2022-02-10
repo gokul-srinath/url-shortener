@@ -86,24 +86,15 @@ const Table = ({trigger}) => {
             </THead>
             <TBody>
 
-            <TRow>
-                <TData><Link href='#'>https://www.youtube.com/watch?v=btWnZxF-Hck</Link></TData>
-                <TData><Link href='#'>_mFPZ0OcD0r07sxfle1Sb</Link></TData>
-                <TData>2</TData>
-            </TRow>
-            <TRow>
-                <TData><Link href='#'>https://www.youtube.com/watch?v=btWnZxF-Hck</Link></TData>
-                <TData><Link href='#'>_mFPZ0OcD0r07sxfle1Sb</Link></TData>
-                <TData>2</TData>
-            </TRow>
             
-                {/* {urls && JSON.parse(urls.message).map(url => {
+            
+                {urls && JSON.parse(urls.message).map(url => {
                     return (<TRow key={url._id}>
                         <TData><Link href={url.full}>{url.full}</Link></TData>
-                        <TData><Link href={`http://localhost:8080/${url.short}`}>{url.short}</Link></TData>
+                        <TData><Link href={`http://localhost:8080/${url.short}`} target="_blank">{url.short}</Link></TData>
                         <TData>{url.clicks}</TData>
                     </TRow>);
-                })} */}
+                })}
             </TBody>
         </TableContainer>
     </Container>
