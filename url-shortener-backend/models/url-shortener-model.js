@@ -5,7 +5,8 @@ const {Schema,model} = require('mongoose');
 const urlSchema = new Schema({
     full:{
         type:String,
-        required:true
+        required:true,
+        unique:true
     },
     short:{
         type:String,
